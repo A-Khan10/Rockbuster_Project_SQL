@@ -33,10 +33,47 @@ HAVING COUNT (*) = NULL OR COUNT (*) <1 -- no result means there are no missing 
 
 
 
-Film Table Descriptive Statistics:
-SELECT MIN(film_id) AS “film_min”, MAX(film_id) AS “film_max”, AVG(film_id) AS “film_avg”, MIN(release_year) AS “release_year_min”, MAX(release_year) AS “release_year_max”, AVG(release_year) AS “release_year_average”, MIN(language_id) AS “language_id_min”, MAX(language_id) AS “language_id_max”, AVG(language_id) AS “language_id_average”, MIN(rental_rate) AS “rental_rate_min”, MAX(rental_rate) AS “rental_rate_max”, AVG(rental_rate) AS “rental_rate_average”, MIN(length) AS “length_min”, MAX(length) AS “length_max”, AVG(length) AS “length_avg”, MIN(replacement_cost) AS “replacement_cost_min”, MAX(replacement_cost) AS “replacement_cost_max”, AVG(replacement_cost) AS “replacement_cost_avg” FROM film
-SELECT MODE() WITHIN GROUP (ORDER BY title) AS  title_mode, MODE() WITHIN GROUP (ORDER BY description) AS description_mode, MODE() WITHIN GROUP(ORDER BY last_update) AS last_update_mode, MODE() WITHIN GROUP(ORDER BY special_features) AS special_features_mode, MODE() WITHIN GROUP(ORDER BY fulltext) AS fulltext_mode FROM film
+#Film Table Descriptive Statistics:
+Select MIN(rental_duration) AS min_rental_duration,					
+MAX(rental_duration) AS max_rental_duration,					
+AVG(rental_duration) AS avg_rental_duration,					
+COUNT(rental_duration)AS count_rental_duration,
+COUNT(*) AS count_rows,
+MIN(rental_rate) AS min_rental_rate,					
+MAX(rental_rate) AS max_rental_rate,					
+AVG(rental_rate) AS avg_rental_rate,					
+COUNT(rental_rate) AS count_rental_rate,
+COUNT(*) AS count_rows,
+MIN(length) AS min_length,					
+MAX(length) AS max_length,					
+AVG(length) AS avg_length,					
+COUNT(length) AS count_length,
+COUNT(*) AS count_rows,
+MIN(replacement_cost) AS min_replacement_cost,					
+MAX(replacement_cost) AS max_replacement_cost,					
+AVG(replacement_cost) AS avg_replacement_cost,					
+COUNT(replacement_cost) As count_replacement_cost,					
+COUNT(*) AS count_rows
+FROM film
 
-Customer Table Descriptive Statistics:
-SELECT MIN(customer_id) AS “customer_id_min”, MAX(customer_id) AS “customer_id_max”, AVG(customer_id) AS “customer_id_avg”, MIN(store_id) AS “store_id_min”, MAX(store_id) AS “store_id_max”, AVG(store_id) AS “store_id_avg”, MIN(address_id) AS “address_id_min”, MAX(address_id) AS “address_id_max”, AVG(address_id) AS “address_id_avg”, MIN(active) AS “active_min”, MAX(active) AS “active_max”, AVG(active) AS “active_avg” FROM customer
-SELECT MODE() WITHIN GROUP(ORDER BY first_name) AS first_name_mode, MODE() WITHIN GROUP(ORDER BY last_name) AS last_name_mode, MODE() WITHIN GROUP(ORDER BY email) AS email_mode, MODE() WITHIN GROUP(ORDER BY activebool) AS active_bool_mode, MODE() WITHIN GROUP(ORDER BY create_date) AS create_date_mode, MODE() WITHIN GROUP(ORDER BY last_update) AS last_update_mode FROM customer
+# Film Table non-numerical Descriptive Statistics:
+SELECT MODE() WITHIN GROUP (ORDER BY title) AS title_modal_value,
+MODE() WITHIN GROUP (ORDER BY film_id) AS film_id_modal_value,
+MODE() WITHIN GROUP (ORDER BY description) AS description_modal_value,					
+MODE() WITHIN GROUP (ORDER BY release_year)AS release_year_modal_value,					
+MODE() WITHIN GROUP (ORDER BY rating) AS rating_modal_value,					
+MODE() WITHIN GROUP (ORDER BY special_features) AS special_features_value, 					
+MODE() WITHIN GROUP (ORDER BY last_update) AS last_update_modal_value,					
+MODE() WITHIN GROUP (ORDER BY fulltext) AS fulltext_modal_value					
+FROM film
+
+
+# Customer Table non-numerical Descriptive Statistics:
+SELECT MODE() WITHIN GROUP (ORDER BY customer_id) AS customer_id_modal_value,
+MODE() WITHIN GROUP (ORDER BY store_id) AS store_id_modal_value
+MODE() WITHIN GROUP (ORDER BY first_name) AS first_name_modal_value
+MODE() WITHIN GROUP (ORDER BY last_name) AS last_name_modal_value, 
+MODE() WITHIN GROUP (ORDER BY create_date) AS create_date_modal_value,
+MODE() WITHIN GROUP (ORDER BY last_update) AS last_update_modal_value, 
+MODE() WITHIN GROUP (ORDER BY active) AS active_modal_value
+FROM customer 
