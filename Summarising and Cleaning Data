@@ -1,7 +1,7 @@
 The following queries are used to Summarizing and clean data in the Rockbuster Data Sets. The queries also include descriptive statistics of the data sets.
 
-## Queries:
-## Checking for Duplicate data:
+Queries:
+#Checking for Duplicate data:
 SELECT film_id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, last_update, special_features, fulltext, COUNT(*)
 FROM film
 GROUP BY film_id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, last_update, special_features, fulltext HAVING COUNT(*) >1
@@ -12,7 +12,7 @@ GROUP BY customer_id, store_id, first_name, last_name, email, address_id, active
 HAVING COUNT(*)>1
 
 
-## Checking for non-uniform data:
+#Checking for non-uniform data:
 SELECT DISTINCT film_id, title, release_year, rental_duration, length, replacement_cost, rating, FROM film
 GROUP BY film_id, title, release_year, rental_duration, length, replacement_cost, rating ORDER BY rating
 
@@ -21,17 +21,17 @@ GROUP BY customer_id, store_id, first_name, last_name, email, address_id, active
 
 
 
-
-
-
-## Checking for missing data:
+#Checking for missing data:
 SELECT film_id, title, description, release_year, language_id, rental_rate, length, replacement_cost, last_update, special_features, fulltext, COUNT(*) FROM film
 GROUP BY ilm_id, title, description, release_year, language_id, rental_rate, length, replacement_cost, last_update, special_features, fulltext
 HAVING COUNT(*) = NULL OR COUNT (*) <1 -- no result means there are no missing values or zero's
 
 
+SELECT customer_id, store_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active, COUNT(*) FROM customer
+GROUP BY customer_id, store_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active
+HAVING COUNT (*) = NULL OR COUNT (*) <1 -- no result means there are no missing values or zero's
 
-SELECT * FROM customer WHERE customer_id = NULL OR store_id = NULL OR first_name = NULL OR last_name = NULL OR email = NULL OR address_id = NULL OR activebool = NULL OR create_date = NULL OR last_update = NULL OR active = NULL
+
 
 Film Table Descriptive Statistics:
 SELECT MIN(film_id) AS “film_min”, MAX(film_id) AS “film_max”, AVG(film_id) AS “film_avg”, MIN(release_year) AS “release_year_min”, MAX(release_year) AS “release_year_max”, AVG(release_year) AS “release_year_average”, MIN(language_id) AS “language_id_min”, MAX(language_id) AS “language_id_max”, AVG(language_id) AS “language_id_average”, MIN(rental_rate) AS “rental_rate_min”, MAX(rental_rate) AS “rental_rate_max”, AVG(rental_rate) AS “rental_rate_average”, MIN(length) AS “length_min”, MAX(length) AS “length_max”, AVG(length) AS “length_avg”, MIN(replacement_cost) AS “replacement_cost_min”, MAX(replacement_cost) AS “replacement_cost_max”, AVG(replacement_cost) AS “replacement_cost_avg” FROM film
