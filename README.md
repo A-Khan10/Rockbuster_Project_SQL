@@ -10,4 +10,5 @@ The Rockbuster Stealth Management Board has asked a series of business questions
 ● Where are customers with a high lifetime value based?
 ● Do sales figures vary between geographic regions?
 # Context
-To answer the questions posed by the different departments, I query the data using SQL (short for Structured Query Language). Then translate these answers into Tableau to create [visuals and dashboards.]([ ](https://public.tableau.com/app/profile/ayaz.khan7372/viz/Rockbustergraphs/Story1)Finally, create a final presentation for management to view.
+To answer the questions posed by the different departments, I query the data using SQL (short for Structured Query Language). Then translate these answers into Tableau to create [visuals and dashboards.](https://public.tableau.com/views/Rockbustergraphs/Story1?:language=en-GB&:display_count=n&:origin=viz_share_link)
+Finally, create a final presentation for management to view.
