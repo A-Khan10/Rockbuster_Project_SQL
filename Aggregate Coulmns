@@ -1,7 +1,15 @@
 In the following queries, aggregate columns are created. In the first query, only movies with certain ratings are included.
 In the second query the result is group by rating.
 
-Queries:
-SELECT COUNT(film_id) AS "count_of_movies", AVG(rental_rate) AS "average_movie_rental_rate", MIN(rental_duration) AS "minimum_rental_duration", MAX(rental_duration) AS "maximum_rental_duration" FROM film WHERE rating IN ('G', 'PG')
+# Queries:
+SELECT COUNT(film_id) AS "count_of_movies",
+AVG(rental_rate) AS "average_movie_rental_rate",
+MIN(rental_duration) AS "minimum_rental_duration",
+MAX(rental_duration) AS "maximum_rental_duration"
+FROM film WHERE rating IN ('G', 'PG')
 
-SELECT rating, COUNT(film_id) AS "count of movies", AVG(rental_rate) AS "average_movie_rental_rate", MIN(rental_duration) AS "minimum_rental_duration", MAX(rental_duration) AS "maximum_rental_duration" FROM film WHERE rating IN ('PG','G') GROUP BY rating
+SELECT rating, COUNT(film_id) AS "count of movies",
+AVG(rental_rate) AS "average_movie_rental_rate", 
+MIN(rental_duration) AS "minimum_rental_duration", 
+MAX(rental_duration) AS "maximum_rental_duration" 
+FROM film WHERE rating IN ('PG','G') GROUP BY rating
